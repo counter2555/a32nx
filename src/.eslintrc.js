@@ -82,6 +82,8 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-undef-init': 'off',
         'max-len': ['error', { code: 128 }],
+
+        'jsx-a11y/label-has-associated-control': 'off',
     },
     globals: {
         Simplane: 'readonly',

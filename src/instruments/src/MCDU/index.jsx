@@ -49,13 +49,15 @@ function Idle() {
     return (
         <div className="mcdu-outer">
             <div className="mcdu-inner">
-                <div className="flex-none">
-                    <p>TITLE</p>
+                <div className="title">
+                    <p />
+                    <p className="title-text">TITLE</p>
+                    <p />
                 </div>
                 <div className="mcdu-contents">
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((value) => (
                         <div className={value % 2 ? 'align-left' : 'align-right'}>
-                            <label>
+                            <label className={value % 2 ? 'left-label' : 'right-label'}>
                                 {value % 2 ? 'L' : 'R'}
                                 {' '}
                                 label
@@ -73,7 +75,7 @@ function Idle() {
                     ))}
 
                 </div>
-                <div className="flex-none">
+                <div className="scratchpad">
                     <p>SCRATCHPAD</p>
                 </div>
             </div>
