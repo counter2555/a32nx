@@ -26,7 +26,7 @@ const Titlebar = () => {
     return (
         <div className="title">
             <p />
-            <p className="title-text">{title.text}</p>
+            <p className="title-text">{title}</p>
             <p />
         </div>
     );

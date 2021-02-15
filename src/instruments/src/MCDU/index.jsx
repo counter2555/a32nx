@@ -10,7 +10,6 @@ import Titlebar from './Titlebar/Titlebar.jsx';
 import PagesContainer from './Pages/PagesContainer.jsx';
 import Scratchpad from './Scratchpad/Scratchpad.jsx';
 import { RootContext } from './RootContext.jsx';
-import { BasePage, dataTemplate } from './Pages/Templates/BasePage';
 
 // TODO: Move anything dependent on ac power change to A32NX_Core
 function powerAvailable() {
@@ -33,44 +32,16 @@ function SelfTest() {
     );
 }
 
-function titleReducer(state, action) {
-    switch (action.type) {
-    case 'visible':
-        return { ...state, opacity: 100 };
-    case 'invisible':
-        return { ...state, opacity: 0 };
-    case 'change':
-        return { text: action.text, ...state };
-    default:
-        throw new Error();
-    }
-}
-
-function scratchpadReducer(state, action) {
-    switch (action.type) {
-    case 'visible':
-        return { ...state, opacity: 100 };
-    case 'invisible':
-        return { ...state, opacity: 0 };
-    case 'change':
-        return { text: state.text + action.text, ...state };
-    case 'clear':
-        return { text: state.text.substring(0, state.text.length - 1), ...state };
-    default:
-        throw new Error();
-    }
-}
-
 function Idle() {
-    const [scratchpad, setScratchpad] = useReducer(scratchpadReducer, { text: 'SCRATCHPAD', opacity: 0 });
-    const [title, setTitle] = useReducer(titleReducer, { text: 'TITLE FIELD', opacity: 0 });
+    const [scratchpad, setScratchpad] = useState('SCRATCHPAD');
+    const [title, setTitle] = useState('TITLE FIELD');
 
     return (
         <div className="mcdu-outer">
             <RootContext.Provider value={[scratchpad, setScratchpad, title, setTitle]}>
                 <div className="mcdu-inner">
                     <Titlebar />
-                    <BasePage data={dataTemplate} />
+                    <PagesContainer />
                     <Scratchpad />
                 </div>
             </RootContext.Provider>

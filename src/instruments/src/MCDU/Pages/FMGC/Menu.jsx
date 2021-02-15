@@ -26,6 +26,45 @@ const MenuPage = () => {
 
     useEffect(() => {
         setTitle('MCDU MENU');
+        // TODO find out how to maintain the ordering or build a new structuring template or remove the map from the basepage.
+        setData((prevState) => ({
+            ...prevState,
+            L1: {
+                ...prevState.L1,
+                field: {
+                    ...prevState.L1.field,
+                    text: 'FMGC',
+                },
+            },
+            L2: {
+                ...prevState.L2,
+                field: {
+                    ...prevState.L2.field,
+                    text: 'ATSU',
+                },
+            },
+            L3: {
+                ...prevState.L3,
+                field: {
+                    ...prevState.L3.field,
+                    text: 'AIDS',
+                },
+            },
+            L4: {
+                ...prevState.L4,
+                field: {
+                    ...prevState.L4.field,
+                    text: 'CFDS',
+                },
+            },
+            R6: {
+                ...prevState.R6,
+                field: {
+                    ...prevState.R6.field,
+                    text: 'Return',
+                },
+            },
+        }));
     }, []);
 
     /**
@@ -34,7 +73,7 @@ const MenuPage = () => {
      */
 
     return (
-        <BasePage props={data} />
+        <BasePage data={data} />
     );
 };
 
