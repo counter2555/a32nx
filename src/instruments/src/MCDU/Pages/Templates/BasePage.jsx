@@ -17,225 +17,159 @@
  */
 import './styles.scss';
 
-const McduLabels = {
-    L0: {
-        text: 'label1',
-        class: 'small',
-        color: 'white',
-    },
+const dataTemplate = {
     L1: {
-        text: 'label2',
-        class: 'small',
-        color: 'white',
-    },
-    L2: {
-        text: 'label3',
-        class: 'small',
-        color: 'white',
-    },
-    L3: {
-        text: 'label4',
-        class: 'small',
-        color: 'white',
-    },
-    L4: {
-        text: 'label5',
-        class: 'small',
-        color: 'white',
-    },
-    L5: {
-        text: 'label6',
-        class: 'small',
-        color: 'white',
-    },
-    R0: {
-        text: 'label1',
-        class: 'small',
-        color: 'white',
+        label: {
+            text: 'LABEL 1',
+            color: 'white',
+        },
+        field: {
+            text: 'LEFT DATA 1',
+            color: 'green',
+            side: 'L',
+        },
     },
     R1: {
-        text: 'label2',
-        class: 'small',
-        color: 'white',
-    },
-    R2: {
-        text: 'label3',
-        class: 'small',
-        color: 'white',
-    },
-    R3: {
-        text: 'label4',
-        class: 'small',
-        color: 'white',
-    },
-    R4: {
-        text: 'label5',
-        class: 'small',
-        color: 'white',
-    },
-    R5: {
-        text: 'label6',
-        class: 'small',
-        color: 'white',
-    },
-};
-
-const McduText = {
-    L0: {
-        text: 'LEFT DATA 1',
-        class: 'big',
-        color: 'green',
-    },
-    L1: {
-        text: 'LEFT DATA 2',
-        class: 'big',
-        color: 'green',
+        label: {
+            text: 'LABEL 1',
+            color: 'white',
+        },
+        field: {
+            text: 'RIGHT DATA 1',
+            color: 'green',
+            side: 'R',
+        },
     },
     L2: {
-        text: 'LEFT DATA 3',
-        class: 'big',
-        color: 'green',
-    },
-    L3: {
-        text: 'LEFT DATA 4',
-        class: 'big',
-        color: 'green',
-    },
-    L4: {
-        text: 'LEFT DATA 5',
-        class: 'big',
-        color: 'green',
-    },
-    L5: {
-        text: 'LEFT DATA 6',
-        class: 'big',
-        color: 'green',
-    },
-    R0: {
-        text: 'RIGHT DATA 1',
-        class: 'big',
-        color: 'green',
-    },
-    R1: {
-        text: 'RIGHT DATA 2',
-        class: 'big',
-        color: 'green',
+        label: {
+            text: 'LABEL 2',
+            color: 'white',
+        },
+        field: {
+            text: 'LEFT DATA 2',
+            color: 'green',
+            side: 'L',
+        },
     },
     R2: {
-        text: 'RIGHT DATA 3',
-        class: 'big',
-        color: 'green',
+        label: {
+            text: 'LABEL 2',
+            color: 'white',
+        },
+        field: {
+            text: 'RIGHT DATA 2',
+            color: 'green',
+            side: 'R',
+        },
+    },
+    L3: {
+        label: {
+            text: 'LABEL 3',
+            color: 'white',
+        },
+        field: {
+            text: 'LEFT DATA 3',
+            color: 'green',
+            side: 'L',
+        },
     },
     R3: {
-        text: 'RIGHT DATA 4',
-        class: 'big',
-        color: 'green',
+        label: {
+            text: 'LABEL 3',
+            color: 'white',
+        },
+        field: {
+            text: 'RIGHT DATA 3',
+            color: 'green',
+            side: 'R',
+        },
+    },
+    L4: {
+        label: {
+            text: 'LABEL 4',
+            color: 'white',
+        },
+        field: {
+            text: 'LEFT DATA 4',
+            color: 'green',
+            side: 'L',
+        },
     },
     R4: {
-        text: 'RIGHT DATA 5',
-        class: 'big',
-        color: 'green',
+        label: {
+            text: 'LABEL 4',
+            color: 'white',
+        },
+        field: {
+            text: 'RIGHT DATA 4',
+            color: 'green',
+            side: 'R',
+        },
+    },
+    L5: {
+        label: {
+            text: 'LABEL 5',
+            color: 'white',
+        },
+        field: {
+            text: 'LEFT DATA 5',
+            color: 'green',
+            side: 'L',
+        },
     },
     R5: {
-        text: 'RIGHT DATA 6',
-        class: 'big',
-        color: 'green',
+        label: {
+            text: 'LABEL 5',
+            color: 'white',
+        },
+        field: {
+            text: 'RIGHT DATA 5',
+            color: 'green',
+            side: 'R',
+        },
     },
-};
-
-const Label = ({
-    side, text, color, _,
-}) => {
-    const textClass = `label-${side}`;
-    return (
-        <text y="-6%" className={textClass}><tspan className={color}>{text}</tspan></text>
-    );
-};
-
-const Field = ({
-    side, text, color, _,
-}) => {
-    const textClass = `line-${side}`;
-    return (
-        <text className={textClass}><tspan className={color}>{text}</tspan></text>
-    );
-};
-
-const LeftSide = ({ labels, data }) => {
-    const side = 'left';
-    return (
-        <g id="left_side">
-            <g transform="translate(250 256)">
-                <Label side={side} color={labels.L0.color} text={labels.L0.text} size={labels.L0.class} />
-                <Field side={side} color={data.L0.color} text={data.L0.text} size={data.L0.class} />
-            </g>
-            <g transform="translate(250 384)">
-                <Label side={side} color={labels.L1.color} text={labels.L1.text} size={labels.L1.class} />
-                <Field side={side} color={data.L1.color} text={data.L1.text} size={data.L1.class} />
-            </g>
-            <g transform="translate(250 512)">
-                <Label side={side} color={labels.L2.color} text={labels.L2.text} size={labels.L2.class} />
-                <Field side={side} color={data.L2.color} text={data.L2.text} size={data.L2.class} />
-            </g>
-            <g transform="translate(250 640)">
-                <Label side={side} color={labels.L3.color} text={labels.L3.text} size={labels.L3.class} />
-                <Field side={side} color={data.L3.color} text={data.L3.text} size={data.L3.class} />
-            </g>
-            <g transform="translate(250 768)">
-                <Label side={side} color={labels.L4.color} text={labels.L4.text} size={labels.L4.class} />
-                <Field side={side} color={data.L4.color} text={data.L4.text} size={data.L4.class} />
-            </g>
-            <g transform="translate(250 896)">
-                <Label side={side} color={labels.L5.color} text={labels.L5.text} size={labels.L5.class} />
-                <Field side={side} color={data.L5.color} text={data.L5.text} size={data.L5.class} />
-            </g>
-        </g>
-    );
-};
-
-const RightSide = ({ labels, data }) => {
-    const side = 'right';
-    return (
-        <g id="right_side">
-            <g transform="translate(774 256)">
-                <Label side={side} color={labels.R0.color} text={labels.R0.text} size={labels.R0.class} />
-                <Field side={side} color={data.R0.color} text={data.R0.text} size={data.R0.class} />
-            </g>
-            <g transform="translate(774 384)">
-                <Label side={side} color={labels.R1.color} text={labels.R1.text} size={labels.R1.class} />
-                <Field side={side} color={data.R1.color} text={data.R1.text} size={data.R1.class} />
-            </g>
-            <g transform="translate(774 512)">
-                <Label side={side} color={labels.R2.color} text={labels.R2.text} size={labels.R2.class} />
-                <Field side={side} color={data.R2.color} text={data.R2.text} size={data.R2.class} />
-            </g>
-            <g transform="translate(774 640)">
-                <Label side={side} color={labels.R3.color} text={labels.R3.text} size={labels.R3.class} />
-                <Field side={side} color={data.R3.color} text={data.R3.text} size={data.R3.class} />
-            </g>
-            <g transform="translate(774 768)">
-                <Label side={side} color={labels.R4.color} text={labels.R4.text} size={labels.R4.class} />
-                <Field side={side} color={data.R4.color} text={data.R4.text} size={data.R4.class} />
-            </g>
-            <g transform="translate(774 896)">
-                <Label side={side} color={labels.R5.color} text={labels.R5.text} size={labels.R5.class} />
-                <Field side={side} color={data.R5.color} text={data.R5.text} size={data.R5.class} />
-            </g>
-        </g>
-    );
+    L6: {
+        label: {
+            text: 'LABEL 6',
+            color: 'white',
+        },
+        field: {
+            text: 'LEFT DATA 6',
+            color: 'green',
+            side: 'L',
+        },
+    },
+    R6: {
+        label: {
+            text: 'LABEL 6',
+            color: 'white',
+        },
+        field: {
+            text: 'RIGHT DATA 6',
+            color: 'green',
+            side: 'R',
+        },
+    },
 };
 
 const BasePage = (props) => {
     const {
-        labels,
         data,
     } = props;
     return (
-        <g id="page">
-            <LeftSide labels={labels} data={data} />
-            <RightSide labels={labels} data={data} />
-        </g>
+        <div className="mcdu-contents">
+            {Object.values(data).map((item) => (
+                <div className={item.field.side === 'L' ? 'align-left' : 'align-right'}>
+                    <label className={item.field.side === 'L' ? 'left-label' : 'right-label'}>
+                        <span className={item.label.color}>{item.label.text}</span>
+                    </label>
+                    <p>
+                        <span className={item.field.color}>{item.field.text}</span>
+                    </p>
+                </div>
+            ))}
+        </div>
     );
 };
 
-export { BasePage, McduLabels, McduText };
+export { BasePage, dataTemplate };

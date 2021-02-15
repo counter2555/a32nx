@@ -1,17 +1,4 @@
 @import url('/CSS/A32NX_Display_Common.css');
-@font-face {
-  font-family: "Roboto";
-  src: url("/Fonts/RobotoMono-Medium.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Roboto-Light";
-  src: url("/Fonts/RobotoMono-Light.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
 
 @font-face {
   font-family: "ECAMFontRegular";
@@ -20,19 +7,38 @@
   font-style: normal;
 }
 
+
+//STYLING
+
 .title {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding-top: 20px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: stretch;
+  align-content: stretch;
+
+  width: 100%;
+  height: 100%;
+
+  white-space: nowrap;
+
+}
+
+.title-text {
+  text-align: center;
+}
+
+p {
   font-family: "ECAMFontRegular" !important;
-  fill: var(--mcduWhite);
-  text-anchor: middle;
+  color: var(--mcduWhite);
   font-size: 5.8vw;
   letter-spacing: normal;
 }
 
-.arrow {
-  @extend .title;
-  text-anchor: end;
-}
-
+// COLORS
 .white {
   fill: var(--mcduWhite);
 }

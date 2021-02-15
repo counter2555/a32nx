@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import {
     renderTarget,
     useUpdate,
@@ -10,6 +10,7 @@ import Titlebar from './Titlebar/Titlebar.jsx';
 import PagesContainer from './Pages/PagesContainer.jsx';
 import Scratchpad from './Scratchpad/Scratchpad.jsx';
 import { RootContext } from './RootContext.jsx';
+import { BasePage, dataTemplate } from './Pages/Templates/BasePage';
 
 // TODO: Move anything dependent on ac power change to A32NX_Core
 function powerAvailable() {
@@ -32,53 +33,47 @@ function SelfTest() {
     );
 }
 
+function titleReducer(state, action) {
+    switch (action.type) {
+    case 'visible':
+        return { ...state, opacity: 100 };
+    case 'invisible':
+        return { ...state, opacity: 0 };
+    case 'change':
+        return { text: action.text, ...state };
+    default:
+        throw new Error();
+    }
+}
+
+function scratchpadReducer(state, action) {
+    switch (action.type) {
+    case 'visible':
+        return { ...state, opacity: 100 };
+    case 'invisible':
+        return { ...state, opacity: 0 };
+    case 'change':
+        return { text: state.text + action.text, ...state };
+    case 'clear':
+        return { text: state.text.substring(0, state.text.length - 1), ...state };
+    default:
+        throw new Error();
+    }
+}
+
 function Idle() {
-    const [scratchpad, setScratchpad] = useState('SCRATCHPAD FIELD');
-    const [title, setTitle] = useState('TITLE FIELD');
-    // TODO find a way to do the below
-    // const [scratchpad, setScratchpad] = useState(() => ({text: "SCRATCHPAD FIELD", opacity: 0, }));
-    // const [title, setTitle] = useState(() => ({text: "TITLE FIELD", opacity: 0, }));
-    // return (
-    //     <svg className="main-wrapper" viewBox="0 0 1024 1024" width="1024" height="1024">
-    //         <RootContext.Provider value={[scratchpad, setScratchpad, title, setTitle]}>
-    //             <Titlebar />
-    //             <PagesContainer />
-    //             <Scratchpad />
-    //         </RootContext.Provider>
-    //     </svg>
+    const [scratchpad, setScratchpad] = useReducer(scratchpadReducer, { text: 'SCRATCHPAD', opacity: 0 });
+    const [title, setTitle] = useReducer(titleReducer, { text: 'TITLE FIELD', opacity: 0 });
+
     return (
         <div className="mcdu-outer">
-            <div className="mcdu-inner">
-                <div className="title">
-                    <p />
-                    <p className="title-text">TITLE</p>
-                    <p />
+            <RootContext.Provider value={[scratchpad, setScratchpad, title, setTitle]}>
+                <div className="mcdu-inner">
+                    <Titlebar />
+                    <BasePage data={dataTemplate} />
+                    <Scratchpad />
                 </div>
-                <div className="mcdu-contents">
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((value) => (
-                        <div className={value % 2 ? 'align-left' : 'align-right'}>
-                            <label className={value % 2 ? 'left-label' : 'right-label'}>
-                                {value % 2 ? 'L' : 'R'}
-                                {' '}
-                                label
-                                {' '}
-                                {value}
-                            </label>
-                            <p>
-                                {value % 2 ? 'L' : 'R'}
-                                {' '}
-                                data
-                                {' '}
-                                {value}
-                            </p>
-                        </div>
-                    ))}
-
-                </div>
-                <div className="scratchpad">
-                    <p>SCRATCHPAD</p>
-                </div>
-            </div>
+            </RootContext.Provider>
         </div>
     );
 }

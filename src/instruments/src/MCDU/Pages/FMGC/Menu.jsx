@@ -17,39 +17,15 @@
  */
 
 import { useState, useEffect, useContext } from 'react';
-import { BasePage, McduLabels, McduText } from '../Templates/BasePage.jsx';
+import { BasePage, dataTemplate } from '../Templates/BasePage.jsx';
 import { RootContext } from '../../RootContext.jsx';
 
 const MenuPage = () => {
-    const [labels, setLabels] = useState(McduLabels);
-    const [text, _] = useState(McduText);
+    const [data, setData] = useState(dataTemplate);
     const [, , , setTitle] = useContext(RootContext);
 
     useEffect(() => {
         setTitle('MCDU MENU');
-        setLabels((prevState) => ({
-            ...prevState,
-            L0: {
-                ...prevState.L0,
-                text: 'FMGC',
-            },
-            L1: {
-                ...prevState.L3,
-                text: 'ATSU',
-            },
-            L2: {
-                ...prevState.L2,
-                text: 'AIDS',
-            },
-            L3: {
-                ...prevState.L1,
-                text: 'CFDS',
-            },
-            L4: {
-                ...prevState.L4,
-                text: 'Return',
-            },
-        }));
     }, []);
 
     /**
@@ -58,7 +34,7 @@ const MenuPage = () => {
      */
 
     return (
-        <BasePage data={text} labels={labels} />
+        <BasePage props={data} />
     );
 };
 

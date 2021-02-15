@@ -1,17 +1,4 @@
 @import url('/CSS/A32NX_Display_Common.css');
-@font-face {
-  font-family: "Roboto";
-  src: url("/Fonts/RobotoMono-Medium.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Roboto-Light";
-  src: url("/Fonts/RobotoMono-Light.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
 
 @font-face {
   font-family: "ECAMFontRegular";
@@ -20,18 +7,22 @@
   font-style: normal;
 }
 
-
-.scratchpad {
-  text-anchor: start;
-  font-family: "ECAMFontRegular" !important;
-  fill: var(--mcduWhite);
-  font-size: 5.8vw;
-  letter-spacing: normal;
+.flex-none {
+  margin-bottom: 20px;
+  margin-top: 20px;
+  flex: none;
 }
 
-.arrow {
-  @extend .scratchpad;
-  text-anchor: end;
+.scratchpad {
+  @extend .flex-none;
+  margin-top: -10px;
+}
+
+p {
+  font-family: "ECAMFontRegular" !important;
+  color: var(--mcduWhite);
+  font-size: 5.8vw;
+  letter-spacing: normal;
 }
 
 .white {

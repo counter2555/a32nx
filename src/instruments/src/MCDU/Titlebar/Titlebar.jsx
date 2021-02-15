@@ -24,12 +24,11 @@ const Titlebar = () => {
     const [, , title] = useContext(RootContext);
 
     return (
-        <g id="title" transform="translate(512 100)">
-            <text className="title"><tspan className="green">{title}</tspan></text>
-            <g id="arrow" transform="translate(512 0)">
-                <text opacity={100} className="arrow"><tspan className="white">{'{}'}</tspan></text>
-            </g>
-        </g>
+        <div className="title">
+            <p />
+            <p className="title-text">{title.text}</p>
+            <p />
+        </div>
     );
 };
 
